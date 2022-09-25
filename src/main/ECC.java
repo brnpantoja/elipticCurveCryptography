@@ -11,6 +11,20 @@ public class ECC {
         this.b = b;
     }
 
+    // tem 0(n) complexidade de tempo de execução linear
+    public Point doubleAndAdd(Point p, int n) {
+        Point r = new Point(0, 0);
+        Point q = p;
+        while (n > 0) {
+            if (n % 2 == 1) {
+                r = pointAddition(r, q);
+            }
+            q = pointAddition(q, q);
+            n = n / 2;
+        }
+        return r;
+    }
+
     public Point pointAddition(Point p, Point q) {
 
         double x1 = p.getX();
